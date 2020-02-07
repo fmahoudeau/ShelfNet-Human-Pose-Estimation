@@ -43,7 +43,11 @@ This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoint
 
 ## Training on Your Own
 
- 
+Commands used to train ShelfNet on COCO
+
+python train.py --cfg ../coco/shelfnet/shelfnet_256x192_adam_lr1e-3.yaml
+python train.py --cfg ../coco/shelfnet/shelfnet_384x288_adam_lr1e-3.yaml
+
 
 ## Requirements
 
