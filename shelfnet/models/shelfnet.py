@@ -11,7 +11,7 @@ import torch.nn.functional as F
 
 from .base import BaseNet
 
-__all__ = ['ShelfNet', 'BasicBlock', 'get_pose_net']
+__all__ = ['ShelfNet', 'get_pose_net']
 
 
 model_urls = {

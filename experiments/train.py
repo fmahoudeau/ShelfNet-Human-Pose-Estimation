@@ -36,13 +36,10 @@ def parse_args():
                         help='experiment configure file name',
                         required=True,
                         type=str)
-
     parser.add_argument('opts',
                         help="Modify config options using the command-line",
                         default=None,
                         nargs=argparse.REMAINDER)
-
-    # philly
     parser.add_argument('--modelDir',
                         help='model directory',
                         type=str,
@@ -69,9 +66,7 @@ def main():
     args = parse_args()
     update_config(cfg, args)
 
-    logger, final_output_dir, tb_log_dir = create_logger(
-        cfg, args.cfg, 'train')
-
+    logger, final_output_dir = create_logger(cfg, args.cfg, 'train')
     logger.info(pprint.pformat(args))
     logger.info(cfg)
 

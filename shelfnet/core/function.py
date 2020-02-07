@@ -24,8 +24,7 @@ from ..utils.vis import save_debug_images
 logger = logging.getLogger(__name__)
 
 
-def train(device, config, train_loader, model, criterion, optimizer, epoch,
-          output_dir, tb_log_dir):
+def train(device, config, train_loader, model, criterion, optimizer, epoch, output_dir):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -89,7 +88,7 @@ def train(device, config, train_loader, model, criterion, optimizer, epoch,
                               prefix)
 
 
-def validate(device, config, val_loader, val_dataset, model, criterion, output_dir, tb_log_dir):
+def validate(device, config, val_loader, val_dataset, model, criterion, output_dir):
     batch_time = AverageMeter()
     losses = AverageMeter()
     acc = AverageMeter()

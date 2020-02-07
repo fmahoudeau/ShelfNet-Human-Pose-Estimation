@@ -30,14 +30,12 @@ from shelfnet import models
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Train keypoints network')
+    parser = argparse.ArgumentParser(description='Test keypoints network')
     # general
     parser.add_argument('--cfg',
                         help='experiment configure file name',
                         required=True,
                         type=str)
-    parser.add_argument('--gpu-id', type=int, default=1,
-                        help='gpu device id (default: 0)')
     parser.add_argument('opts',
                         help="Modify config options using the command-line",
                         default=None,
@@ -68,9 +66,7 @@ def main():
     args = parse_args()
     update_config(cfg, args)
 
-    logger, final_output_dir, tb_log_dir = create_logger(
-        cfg, args.cfg, 'valid')
-
+    logger, final_output_dir = create_logger(cfg, args.cfg, 'valid')
     logger.info(pprint.pformat(args))
     logger.info(cfg)
 
@@ -83,6 +79,10 @@ def main():
     torch.backends.cudnn.enabled = cfg.CUDNN.ENABLED
 
     model = eval('models.' + cfg.MODEL.NAME + '.get_pose_net')(cfg)
+
+    # count parameter number
+    pytorch_total_params = sum(p.numel() for p in model.parameters())
+    logger.info("Total number of parameters: %d" % pytorch_total_params)
 
     if cfg.TEST.MODEL_FILE:
         logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
@@ -117,8 +117,7 @@ def main():
         pin_memory=True)
 
     # evaluate on validation set
-    validate(device, cfg, valid_loader, valid_dataset, model, criterion,
-             final_output_dir, tb_log_dir)
+    validate(device, cfg, valid_loader, valid_dataset, model, criterion, final_output_dir)
 
 
 if __name__ == '__main__':

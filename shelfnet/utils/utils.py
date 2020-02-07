@@ -48,13 +48,7 @@ def create_logger(cfg, cfg_name, phase='train'):
     console = logging.StreamHandler()
     logging.getLogger('').addHandler(console)
 
-    tensorboard_log_dir = Path(cfg.LOG_DIR) / dataset / model / \
-        (cfg_name + '_' + time_str)
-
-    print('=> creating {}'.format(tensorboard_log_dir))
-    tensorboard_log_dir.mkdir(parents=True, exist_ok=True)
-
-    return logger, str(final_output_dir), str(tensorboard_log_dir)
+    return logger, str(final_output_dir)
 
 
 def get_optimizer(cfg, model):
