@@ -26,7 +26,8 @@ As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decod
 
 ## Results on Microsoft COCO KeyPoints
 
-This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoints](http://cocodataset.org/#keypoints-2019) dataset, and makes a comparison with the state of the art HRNet. All experiments use the same person detector with a mAP of 0.56. A single Titan RTX with 24GB RAM was used. The batch size for ShelfNet50 is 128 for an input size of 256x192 and 72 for 384x288.
+This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoints](http://cocodataset.org/#keypoints-2019) dataset, and makes a comparison with the state of the art HRNet. All experiments use the same person detector 
+which has AP of 56.4 on COCO val2017 dataset. You can find the download link on the HRNet [repository](https://github.com/HRNet/HRNet-Human-Pose-Estimation). A single Titan RTX with 24GB RAM was used for the ShelfNet50 experiments. The batch size is 128 for an input size of 256x192 and 72 for 384x288.
 
 
 | Architecture            | Input size  | Parameters  |    AP   |    AR   | Memory size |   FPS   |
@@ -42,7 +43,7 @@ This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoint
 
 ## Training on Your Own
 
-I'm providing pre-trained weights for ShelfNet50 to make it easier to start. The test accuracies are given without providing the ground truth bounding boxes at test time.
+I'm providing pre-trained weights for ShelfNet50 to make it easier to start. The test accuracies are obtained without providing the ground truth bounding boxes.
 
 | Model                                                                                |    AP   |
 |--------------------------------------------------------------------------------------|---------|
