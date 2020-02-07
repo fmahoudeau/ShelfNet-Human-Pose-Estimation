@@ -29,23 +29,24 @@ As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decod
 This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoints](http://cocodataset.org/#keypoints-2019) dataset, and makes a comparison with the state of the art HRNet. All experiments use the same person detector with a mAP of 0.56. A single Titan RTX with 24GB RAM was used. The batch size for ShelfNet50 is 128 for an input size of 256x192 and 72 for 384x288.
 
 
-| Architecture            | Input size  | Parameters  |    AP   |    AR   | Memory size  |   FPS   |
-|-------------------------|-------------|-------------|---------|---------|--------------|---------|
-| pose_hrnet_w32          | 256x192     | 28.5M       |  0.744  |  0.798  | xxx MB       | xxxx    |
-| pose_hrnet_w32          | 384x288     | 28.5M       |  0.758  |  0.809  | xxx MB       | xxxx    |
-| pose_hrnet_w48          | 256x192     | 63.6M       |  0.751  |  0.804  | xxx MB       | xxxx    |
-| pose_hrnet_w48          | 384x288     | 63.6M       |  0.763  |  0.812  | xxx MB       | xxxx    |
-| shelfnet_50             | 256x192     | xx.xM       |  0.725  |  0.782  | xxx MB       | xxxx    |
-| shelfnet_50             | 384x288     | xx.xM       |  0.746  |  0.797  | xxx MB       | xxxx    |
+| Architecture            | Input size  | Parameters  |    AP   |    AR   |   FPS   |
+|-------------------------|-------------|-------------|---------|---------|---------|
+| pose_hrnet_w32          | 256x192     | 28.5M       |  0.744  |  0.798  | xxxx    |
+| pose_hrnet_w32          | 384x288     | 28.5M       |  0.758  |  0.809  | xxxx    |
+| pose_hrnet_w48          | 256x192     | 63.6M       |  0.751  |  0.804  | xxxx    |
+| pose_hrnet_w48          | 384x288     | 63.6M       |  0.763  |  0.812  | xxxx    |
+| shelfnet_50             | 256x192     | 38.7M       |  0.725  |  0.782  | xxxx    |
+| shelfnet_50             | 384x288     | 38.7M       |  0.746  |  0.797  | xxxx    |
 
 
 ## Training on Your Own
 
 I'm providing pre-trained weights for ShelfNet50 to make it easier to start. The test accuracies are given without providing the ground truth bounding boxes at test time.
 
-| Architecture                                                                    | Parameters  |    AP   |
-|---------------------------------------------------------------------------------|-------------|---------|
-| [ShelfNet50](https://1drv.ms/u/s!AvyZUg7UPo_CgdN0CZ9lbJsVihw-Lw?e=aWO657)       | xx.xM       |  0.746  |
+| Model                                                                                |    AP   |
+|--------------------------------------------------------------------------------------|---------|
+| [ShelfNet50_256x192](https://1drv.ms/u/s!AvyZUg7UPo_CgdN2S7I54mQD_bglow?e=ENRfVH)    |  0.725  |
+| [ShelfNet50_384x288](https://1drv.ms/u/s!AvyZUg7UPo_CgdN3kXRSo4PrHcf8RQ?e=IscuxG)    |  0.746  |
 
 
 You can train and evaluate directly from the command line as such:
