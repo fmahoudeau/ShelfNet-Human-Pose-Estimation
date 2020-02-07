@@ -1,8 +1,6 @@
-# ShelfNet for Human Pose Estimation
+# Real-time highly accurate Human Pose Estimation using ShelfNet with PyTorch
 
-Real-time highly accurate Human Pose Estimation using ShelfNet with PyTorch. 
-
-This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and xx FPS on the MS COCO keypoints task which represents a 4x boost in FPS for an accuracy similar to the current state of the art. 
+This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and xx FPS on the MS COCO keypoints task which represents a 4x boost in FPS with an accuracy similar to the current state of the art. 
 
 This repository includes:
 
@@ -19,11 +17,11 @@ If you use it in your projects, please consider citing this repository (bibtex b
  
 ## ShelfNet Architecture Overview
 
-The ShelfNet architecture was introduced by J. Zhuang, J. Yang, L. Gu and N. Dvornek through a paper available on [arXiv](https://arxiv.org/abs/1811.11254). The paper only evaluates the network on the semantic segmentation task. The authors' contribution is to have created a fast architecture with similar performance to the state of the art (PSPNet & EncNet) on PASCAL VOC and better performance on Cityscapes. Compared to other architectures, ShelfNet is more suitable for real-world applications with resource constraints.
+The ShelfNet architecture was introduced by J. Zhuang, J. Yang, L. Gu and N. Dvornek through a paper available on [arXiv](https://arxiv.org/abs/1811.11254). The paper evaluates the network only on the semantic segmentation task. The authors' contribution is to have created a fast architecture with a performance similar to the state of the art (PSPNet & EncNet at the time of publishing this repository) on **PASCAL VOC** and better performance on **Cityscapes**. Therefore, ShelfNet is presently one of the most suitable architectures for real-world applications with resource constraints.
 
 ![ShelfNet Architecture](assets/ShelfNet_Architecture.jpg)
 
-As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decoder branches. The first encoder (in green) reduces channel complexity by a factor 4 for faster inference speed. The S-block is a residual block with shared-weights to significantly reduce the number of parameters. The network uses strided convolutions for down-sampling and transpose convolutions for up-sampling. The structure can be seen as an ensemble of [FCN](https://github.com/fmahoudeau/fcn) where the information flows through many different paths, resulting in increased accuracy.
+As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decoder branches. The first encoder (in green?) reduces channel complexity by a factor 4 for faster inference speed. The S-block is a residual block with shared-weights to significantly reduce the number of parameters. The network uses strided convolutions for down-sampling and transpose convolutions for up-sampling. The structure can be seen as an ensemble of [FCN](https://github.com/fmahoudeau/fcn) where the information flows through many different paths, resulting in increased accuracy.
 
 
 ## Results on Microsoft COCO KeyPoints
@@ -43,11 +41,26 @@ This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoint
 
 ## Training on Your Own
 
-Commands used to train ShelfNet on COCO
+I'm providing pre-trained weights for ShelfNet50 to make it easier to start. The test accuracies are given without providing the ground truth bounding boxes at test time.
 
-python train.py --cfg ../coco/shelfnet/shelfnet_256x192_adam_lr1e-3.yaml
-python train.py --cfg ../coco/shelfnet/shelfnet_384x288_adam_lr1e-3.yaml
+| Architecture                                                                    | Parameters  |    AP   |
+|---------------------------------------------------------------------------------|-------------|---------|
+| [ShelfNet50](https://1drv.ms/u/s!AvyZUg7UPo_CgdN0CZ9lbJsVihw-Lw?e=aWO657)       | xx.xM       |  0.746  |
 
+
+You can train and evaluate directly from the command line as such:
+```
+# Train ShelfNet on COCO
+python train.py --cfg coco/shelfnet/shelfnet50_384x288_adam_lr1e-3.yaml
+```
+
+```
+# Test ShelfNet on COCO
+python test.py --cfg coco/shelfnet/shelfnet50_384x288_adam_lr1e-3.yaml TEST.MODEL_FILE ../output/coco/shelfnet/shelf_384x288_adam_lr1e-3/model_best.pth TEST.USE_GT_BBOX False
+| Arch       | AP    | Ap .5 | AP .75| AP (M)| AP (L)| AR    | AR .5 | AR .75| AR (M)| AR (L)|
+|------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| shelfnet   | 0.746 | 0.901 | 0.814 | 0.706 | 0.818 | 0.797 | 0.938 | 0.858 | 0.752 | 0.862 |
+```
 
 ## Requirements
 
