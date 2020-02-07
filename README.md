@@ -1,6 +1,6 @@
 # Real-time highly accurate Human Pose Estimation using ShelfNet with PyTorch
 
-This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and xx FPS on the MS COCO keypoints task which represents a 4x boost in FPS with an accuracy similar to the current state of the art. 
+This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and 127 FPS on the MS COCO keypoints task which represents a 3.5x boost in FPS with an accuracy similar to the current state of the art. 
 
 This repository includes:
 
@@ -29,14 +29,15 @@ As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decod
 This section reports test results for ShelfNet50 on the famous [MS COCO KeyPoints](http://cocodataset.org/#keypoints-2019) dataset, and makes a comparison with the state of the art HRNet. All experiments use the same person detector with a mAP of 0.56. A single Titan RTX with 24GB RAM was used. The batch size for ShelfNet50 is 128 for an input size of 256x192 and 72 for 384x288.
 
 
-| Architecture            | Input size  | Parameters  |    AP   |    AR   |   FPS   |
-|-------------------------|-------------|-------------|---------|---------|---------|
-| pose_hrnet_w32          | 256x192     | 28.5M       |  0.744  |  0.798  | xxxx    |
-| pose_hrnet_w32          | 384x288     | 28.5M       |  0.758  |  0.809  | xxxx    |
-| pose_hrnet_w48          | 256x192     | 63.6M       |  0.751  |  0.804  | xxxx    |
-| pose_hrnet_w48          | 384x288     | 63.6M       |  0.763  |  0.812  | xxxx    |
-| shelfnet_50             | 256x192     | 38.7M       |  0.725  |  0.782  | xxxx    |
-| shelfnet_50             | 384x288     | 38.7M       |  0.746  |  0.797  | xxxx    |
+| Architecture            | Input size  | Parameters  |    AP   |    AR   | Memory size |   FPS   |
+|-------------------------|-------------|-------------|---------|---------|-------------|---------|
+| pose_hrnet_w32          | 256x192     | 28.5M       |  0.744  |  0.798  |   931 MB    |   37.4  |
+| pose_hrnet_w32          | 384x288     | 28.5M       |  0.758  |  0.809  |   957 MB    |   37.6  |
+| pose_hrnet_w48          | 256x192     | 63.6M       |  0.751  |  0.804  |  1083 MB    |   37.7  |
+| pose_hrnet_w48          | 384x288     | 63.6M       |  **0.763**  |  0.812  |  1103 MB    |   36.7  |
+|-------------------------|-------------|-------------|---------|---------|-------------|---------|
+| **shelfnet_50**             | 256x192     | 38.7M       |  0.725  |  0.782  |  1013 MB    |  127.3  |
+| **shelfnet_50**             | 384x288     | 38.7M       |  0.746  |  0.797  |  1033 MB    |  **127.7**  |
 
 
 ## Training on Your Own
