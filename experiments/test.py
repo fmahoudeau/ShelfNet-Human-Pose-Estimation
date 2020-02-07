@@ -28,20 +28,6 @@ from shelfnet.utils.utils import create_logger
 from shelfnet import datasets
 from shelfnet import models
 
-# python test.py --cfg coco/shelfnet_256x192_adam_lr1e-3.yaml TEST.MODEL_FILE ../output/coco/pose_shelfnet/shelf_256x192_adam_lr1e-3/model_best.pth TEST.USE_GT_BBOX False
-
-# python test.py --cfg coco/shelfnet_256x192_adam_lr1e-3.yaml TEST.MODEL_FILE ../output/coco/pose_shelfnet/shelf_256x192_adam_lr1e-3/model_best.pth TEST.USE_GT_BBOX False
-# | Arch          | AP    | Ap .5 | AP .75| AP (M)| AP (L)| AR    | AR .5 | AR .75| AR (M)| AR (L)|
-# |---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-# | pose_shelfnet | 0.725 | 0.896 | 0.798 | 0.690 | 0.794 | 0.782 | 0.935 | 0.847 | 0.739 | 0.843 | => model_best
-# | pose_shelfnet | 0.727 | 0.897 | 0.798 | 0.691 | 0.794 | 0.783 | 0.937 | 0.845 | 0.741 | 0.843 | => final_state
-
-# python test.py --cfg coco//shelfnet_384x288_adam_lr1e-3.yaml TEST.MODEL_FILE ../output/coco/pose_shelfnet/shelf_384x288_adam_lr1e-3/model_best.pth TEST.USE_GT_BBOX False
-# | Arch          | AP    | Ap .5 | AP .75| AP (M)| AP (L)| AR    | AR .5 | AR .75| AR (M)| AR (L)|
-# |---------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-# | pose_shelfnet | 0.746 | 0.901 | 0.814 | 0.706 | 0.818 | 0.797 | 0.938 | 0.858 | 0.752 | 0.862 | => model_best
-# | pose_shelfnet | 0.746 | 0.900 | 0.813 | 0.706 | 0.818 | 0.797 | 0.936 | 0.857 | 0.752 | 0.862 | => final_state
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')

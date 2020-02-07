@@ -258,7 +258,7 @@ def resnet101(pretrained=False, root='/home/fanos/Documents/ModelZoo/PyTorch/han
     """
     model = ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
     if pretrained:
-        from ..models.segmentation.model_store import get_model_file
+        from ..models.model_store import get_model_file
         model.load_state_dict(torch.load(
             get_model_file('resnet101', root=root)), strict=False)
     return model

@@ -28,13 +28,6 @@ from shelfnet.utils.utils import (get_optimizer, save_checkpoint, create_logger)
 from shelfnet import datasets
 from shelfnet import models
 
-# conda install requests tqdm
-# pip install yacs json_tricks pycocotools
-
-# Commands used to train ShelfNet on COCO
-# python train.py --cfg ../coco/shelfnet/shelf_256x192_adam_lr1e-3.yaml
-# python train.py --cfg ../coco/shelfnet/shelf_384x288_adam_lr1e-3.yaml
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train ShelfNet on human key points to estimate pose')
