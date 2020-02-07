@@ -21,7 +21,7 @@ If you use it in your projects, please consider citing this repository (bibtex b
 
 The ShelfNet architecture was introduced by J. Zhuang, J. Yang, L. Gu and N. Dvornek through a paper available on [arXiv](https://arxiv.org/abs/1811.11254). The paper only evaluates the network on the semantic segmentation task. The authors' contribution is to have created a fast architecture with similar performance to the state of the art (PSPNet & EncNet) on PASCAL VOC and better performance on Cityscapes. Compared to other architectures, ShelfNet is more suitable for real-world applications with resource constraints.
 
-![ShelfNet Architecture](assets/ShelfNet Architecture.jpg)
+![ShelfNet Architecture](assets/ShelfNet_Architecture.jpg)
 
 As depicted above, ShelfNet uses a ResNet backbone combined with 2 encoder/decoder branches. The first encoder (in green) reduces channel complexity by a factor 4 for faster inference speed. The S-block is a residual block with shared-weights to significantly reduce the number of parameters. The network uses strided convolutions for down-sampling and transpose convolutions for up-sampling. The structure can be seen as an ensemble of [FCN](https://github.com/fmahoudeau/fcn) where the information flows through many different paths, resulting in increased accuracy.
 
