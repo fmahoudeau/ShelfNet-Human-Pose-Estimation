@@ -1,6 +1,6 @@
 # Fast accurate Human Pose Estimation using ShelfNet with PyTorch
 
-This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and 127 FPS on the MS COCO keypoints task which represents a 3.5x boost in FPS with an accuracy similar to HRNet. 
+This repository is the result of my curiosity to find out whether ShelfNet is an efficient CNN architecture for computer vision tasks other than semantic segmentation, and more specifically for the human pose estimation task. The answer is a clear yes, with 74.6 mAP and 127 FPS on the MS COCO keypoints task which represents a 3.5x boost in FPS compared to HRNet for a similar accuracy. 
 
 This repository includes:
 
