@@ -84,9 +84,7 @@ class Bottleneck(nn.Module):
 
     def _sum_each(self, x, y):
         assert(len(x) == len(y))
-        z = []
-        for i in range(len(x)):
-            z.append(x[i]+y[i])
+        z = np.add(x,y[:len(x)]).tolist()
         return z
 
     def forward(self, x):
